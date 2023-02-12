@@ -1,3 +1,3 @@
-## Pythons random library ported to JavaScriptPort of python's random library
+## Port of python's random library in JavaScript
 
 ### NOTE: This module is not finished
