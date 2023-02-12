@@ -1,13 +1,5 @@
-interface IteratorYieldResult<TYield> {
-  done?: false;
-  value: TYield
-}
-
-interface IteratorReturnResult<TReturn> {
-  done: true;
-  value: TReturn;
-}
-
-interface Iterable<T> {
-  // TODO https://dev.to/gsarciotto/iterators-in-typescript-1d78
+export interface ChoicesOptions {
+  // TODO: one or another https://stackoverflow.com/a/61281828/14416328
+  weights: Array<number> | null;
+  cumulativeWeights: Array<number> | null;
 }
