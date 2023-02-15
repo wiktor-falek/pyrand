@@ -20,7 +20,7 @@ export function randint(start: number, stop: number): number {
     throw new Error(`Empty range (${start}, ${stop})`);
   }
 
-  return Math.floor(random() * (stop - start)) + start;
+  return Math.floor(random() * (stop + 1 - start)) + start;
 }
 
 /**
