@@ -6,6 +6,7 @@
     "module": "commonjs",
     "declaration": true,
     "outDir": "./build",
-    "strict": true
+    "strict": true,
+    "removeComments": false
   }
 }

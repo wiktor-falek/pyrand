@@ -1,5 +1,3 @@
-import cloneDeep from "lodash.clonedeep";
-
 export function random(): number {
   return Math.random();
 }
@@ -34,18 +32,6 @@ export function shuffle(array: Array<any>): void {
 }
 
 /**
- * Shuffles a deep copy of the array and returns it.
- *
- * Even though this doesn't exist in the python library
- * there's no builtin way in JavaScript to create a deep copy.
- */
-export function shuffleCopy(array: Array<any>): Array<any> {
-  const arrayCopy = cloneDeep(array);
-  shuffle(arrayCopy);
-  return arrayCopy;
-}
-
-/**
  * Returns a random element from the array
  */
 export function choice(array: Array<any>): any | undefined {
@@ -57,7 +43,6 @@ interface SampleOptions {
   k?: number;
   counts?: Array<number>;
 }
-
 // TODO: implement
 function sample(population: Array<any>, options: SampleOptions) {
   const { k, counts } = options;
