@@ -48,7 +48,7 @@ export function shuffleCopy(array: Array<any>): Array<any> {
 /**
  * Returns a random element from the array
  */
-function choice(array: Array<any>): any | undefined {
+export function choice(array: Array<any>): any | undefined {
   const index = randint(0, Math.max(0, array.length - 1));
   return array[index];
 }
