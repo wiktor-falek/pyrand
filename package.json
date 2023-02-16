@@ -1,6 +1,6 @@
 {
   "name": "pyrand",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "build/pyrand.js",
   "types": "build/pyrand.d.ts",
