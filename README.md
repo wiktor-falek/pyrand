@@ -11,20 +11,30 @@ NOTE: This module is not finished, many functions are missing, and the code is u
 npm install pyrand
 ```
 
+### Import directly from cdn
+```html
+<script type="module">
+  import pyrand from "https://cdn.jsdelivr.net/npm/pyrand/+esm";
+</script>
+```
+
 ## Usage
 
 ```ts
-import { random, randint, shuffle, choice } from "pyrand";
-
+import pyrand from "pyrand";
 // or using CommonJS syntax
-const { random, randint, shuffle, choice } = require("pyrand");
+const pyrand = require("pyrand");
 
-random(); // returns random float between 0 and 1
+const float = pyrand.random(); // returns random float between 0 and 1
+console.log(float);
 
-randint(1, 3); // returns a random integer between 1 and 3 (inclusive)
+const integer = pyrand.randint(1, 3); // returns a random integer between 1 and 3 (inclusive)
+console.log(integer);
 
-const array = [1, 2, 3];
-shuffle([1, 2, 3]); // shuffles elements of the array in random order
+const array = [1, 2, 3, 4, 5];
+pyrand.shuffle(array); // shuffles elements of the array in random order
+console.log(array); // mutated array
 
-choice(["apple", "orange", "banana"]); // returns a random element from the array
+const randomElement = pyrand.choice(["apple", "orange", "banana"]); // returns a random element from the array
+console.log(randomElement);
 ```
