@@ -1,11 +1,11 @@
-export function random(): number {
+function random(): number {
   return Math.random();
 }
 
 /**
  * Returns a random integer from a range between *start* and *stop* (inclusive).
  */
-export function randint(start: number, stop: number): number {
+function randint(start: number, stop: number): number {
   if (!Number.isInteger(start)) {
     throw new Error("Non-integer argument 'start'");
   }
@@ -24,7 +24,7 @@ export function randint(start: number, stop: number): number {
 /**
  * Shuffles the array in place.
  */
-export function shuffle(array: Array<any>): void {
+function shuffle(array: Array<any>): void {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -34,7 +34,7 @@ export function shuffle(array: Array<any>): void {
 /**
  * Returns a random element from the array
  */
-export function choice(array: Array<any>): any | undefined {
+function choice(array: Array<any>): any | undefined {
   const index = randint(0, Math.max(0, array.length - 1));
   return array[index];
 }
@@ -51,3 +51,10 @@ function sample(population: Array<any>, options: SampleOptions) {
     throw new Error("The number of counts does not match the population");
   }
 }
+
+module.exports = {
+  random,
+  randint,
+  shuffle,
+  choice,
+};

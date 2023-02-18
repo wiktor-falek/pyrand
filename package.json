@@ -1,12 +1,9 @@
 {
   "name": "pyrand",
-  "version": "1.0.7",
-  "description": "",
+  "version": "1.0.8",
+  "description": "Python random module ported to JavaScript",
   "main": "build/pyrand.js",
   "types": "build/pyrand.d.ts",
-  "_moduleAliases": {
-    "pyrand": "build/pyrand"
-  },
   "scripts": {
     "prepublish": "npm run build",
     "prepack": "npm run build",
@@ -21,6 +18,15 @@
   "author": "Wiktor Falek",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^18.14.0",
     "typescript": "^4.9.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wiktor-falek/pyrand.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wiktor-falek/pyrand/issues"
+  },
+  "homepage": "https://github.com/wiktor-falek/pyrand#readme"
 }
