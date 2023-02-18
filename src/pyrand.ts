@@ -1,3 +1,6 @@
+/**
+ * Returns a pseudorandom number between 0 and 1.
+ */
 function random(): number {
   return Math.random();
 }

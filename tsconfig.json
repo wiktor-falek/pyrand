@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["ES6"],
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "declaration": true,
-    "outDir": "./build",
+    "outDir": "./lib",
     "strict": true,
     "removeComments": false
   }

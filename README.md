@@ -10,17 +10,13 @@ NOTE: This module is not finished, many functions are missing, and the code is u
 ```sh
 npm install pyrand
 ```
-### From cdn
-```html
-
-```
 
 ## Usage
 
 ```ts
 import { random, randint, shuffle, choice } from "pyrand";
 
-// or with CommonJs syntax
+// or using CommonJS syntax
 const { random, randint, shuffle, choice } = require("pyrand");
 
 random(); // returns random float between 0 and 1
