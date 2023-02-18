@@ -1,5 +1,6 @@
 /**
  * Returns a pseudorandom number between 0 and 1.
+ * @returns {number}
  */
 function random(): number {
   return Math.random();
@@ -7,14 +8,17 @@ function random(): number {
 
 /**
  * Returns a random integer from a range between *start* and *stop* (inclusive).
+ * @param {number} start
+ * @param {number} stop
+ * @returns {number}
  */
 function randint(start: number, stop: number): number {
   if (!Number.isInteger(start)) {
-    throw new Error("Non-integer argument 'start'");
+    throw new TypeError("Non-integer argument 'start'");
   }
 
   if (!Number.isInteger(stop)) {
-    throw new Error("Non-integer argument 'stop'");
+    throw new TypeError("Non-integer argument 'stop'");
   }
 
   if (start > stop) {
@@ -26,6 +30,7 @@ function randint(start: number, stop: number): number {
 
 /**
  * Shuffles the array in place.
+ * @param {Array<any>} array
  */
 function shuffle(array: Array<any>): void {
   for (let i = array.length - 1; i > 0; i--) {
@@ -35,9 +40,11 @@ function shuffle(array: Array<any>): void {
 }
 
 /**
- * Returns a random element from the array
+ * Returns a random element from the array. If array is empty returns undefined.
+ * @param {Array<any>} array
+ * @returns {any}
  */
-function choice(array: Array<any>): any | undefined {
+function choice(array: Array<any>): any {
   const index = randint(0, Math.max(0, array.length - 1));
   return array[index];
 }
