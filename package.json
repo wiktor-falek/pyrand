@@ -1,6 +1,6 @@
 {
   "name": "pyrand",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Python random module ported to JavaScript",
   "main": "lib/pyrand.js",
   "types": "lib/pyrand.d.ts",
@@ -8,9 +8,8 @@
     "lib/**.*"
   ],
   "scripts": {
-    "hack": "cp src/pyrand.d.ts lib",
-    "prepublish": "npm run build & npm run hack",
-    "prepack": "npm run build & npm run hack",
+    "prepublish": "npm run build",
+    "prepack": "npm run build",
     "build": "tsc"
   },
   "keywords": [
