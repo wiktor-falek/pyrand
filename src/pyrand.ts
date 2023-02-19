@@ -49,18 +49,17 @@ function choice(array: Array<any>): any {
   return array[index];
 }
 
-interface SampleOptions {
-  k?: number;
-  counts?: Array<number>;
-}
 // TODO: implement
-function sample(population: Array<any>, options: SampleOptions) {
-  const { k, counts } = options;
-
-  if (counts != null && counts.length !== population.length) {
-    throw new Error("The number of counts does not match the population");
-  }
-}
+// interface SampleOptions {
+//   k?: number;
+//   counts?: Array<number>;
+// }
+// function _sample(population: Array<any>, options: SampleOptions): void {
+//   const { k, counts } = options;
+//   if (counts != null && counts.length !== population.length) {
+//     throw new Error("The number of counts does not match the population");
+//   }
+// }
 
 module.exports = {
   random,
