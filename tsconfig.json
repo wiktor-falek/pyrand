@@ -5,7 +5,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
-    "declaration": true,
+    "declaration": false,
     "outDir": "./lib",
     "strict": true,
     "removeComments": false

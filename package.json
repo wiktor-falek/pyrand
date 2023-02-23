@@ -1,11 +1,12 @@
 {
   "name": "pyrand",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Python random module ported to JavaScript",
   "main": "lib/pyrand.js",
-  "types": "lib/pyrand.d.ts",
+  "types": "typings/pyrand.d.ts",
   "files": [
-    "lib/**.*"
+    "lib/**.*",
+    "typings/**.*"
   ],
   "scripts": {
     "prepublish": "npm run build",
