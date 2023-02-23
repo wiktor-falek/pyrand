@@ -1,6 +1,6 @@
 # Python random module ported to JavaScript
 
-NOTE: This module is not finished, many functions are missing, and the code is untested
+NOTE: This module is not finished and many functions are still missing
 
 <br>
 
