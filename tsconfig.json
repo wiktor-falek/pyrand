@@ -9,5 +9,7 @@
     "outDir": "./lib",
     "strict": true,
     "removeComments": false
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test.ts"]
 }
