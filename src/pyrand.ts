@@ -91,7 +91,7 @@ function _accumulate(array: Array<number>): Array<number> {
  * the selections are made with equal probability.
  * @param {Array<any>} population
  * @param {number} k
- * @param options
+ * @param {{weights?: Array<number>, cumWeights?: Array<number>}} options
  * @returns
  */
 function choices(
