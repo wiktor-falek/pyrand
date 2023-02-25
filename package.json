@@ -1,6 +1,6 @@
 {
   "name": "pyrand",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Python random module ported to JavaScript",
   "main": "lib/src/pyrand.js",
   "types": "typings/pyrand.d.ts",
