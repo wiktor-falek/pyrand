@@ -67,14 +67,26 @@ test("empty array as population returns an empty array, regardless of k", () => 
   expect(output).toEqual([]);
 });
 
-test("weights array does not match length of population - throws an error", () => {
-  const output = pyrand.choices(["a", "b", "c"], 1, { weights: [1, 1] });
-  expect(output).toThrow();
-});
+test("throws an error if weights.length or cumWeights.length does not equal population.weight", () => {
+  let cb: () => number;
+  
+  cb = () => pyrand.choices(["a", "b", "c"], 1, { weights: [] });
+  expect(cb).toThrow();
 
-test("empty weights option throws an error", () => {
-  const output = pyrand.choices(["a", "b", "c"], 1, { weights: [] });
-  expect(output).toThrow();
+  cb = () => pyrand.choices(["a", "b", "c"], 1, { weights: [1, 1] });
+  expect(cb).toThrow();
+
+  cb = () => pyrand.choices(["a", "b", "c"], 1, { weights: [1, 1, 1, 1] });
+  expect(cb).toThrow();
+
+  cb = () => pyrand.choices(["a", "b", "c"], 1, { cumWeights: [] });
+  expect(cb).toThrow();
+
+  cb = () => pyrand.choices(["a", "b", "c"], 1, { cumWeights: [1, 1] });
+  expect(cb).toThrow();
+
+  cb = () => pyrand.choices(["a", "b", "c"], 1, { cumWeights: [1, 1, 1, 1] });
+  expect(cb).toThrow();
 });
 
 test("items with weight <= 0 can't get selected", () => {
@@ -88,6 +100,7 @@ test("items with weight <= 0 can't get selected", () => {
   expect(outputsWithoutCharacterC.length).toBe(0);
 });
 
-test("total weights must be greater than zero", () => {
-  expect(pyrand.choices(["a", "b"], 10, { weights: [0, 0, 0] })).toThrow();
+test("total weights add up to a value greater than 0", () => {
+  const cb = () => pyrand.choices(["a", "b", "c"], 10, { weights: [0, 0, 0] });
+  expect(cb).toThrow();
 });
