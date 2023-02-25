@@ -49,30 +49,50 @@ function choice(array: Array<any>): any {
   return array[index];
 }
 
-function _bisect(
+function _bisect_right(
   a: Array<number>,
   x: number,
   lo: number = 0,
   hi: number | undefined = undefined
 ): number {
-  // TODO: implement bisect
-  return 1;
+  if (lo < 0 || !Number.isInteger(lo)) {
+    throw new Error("Argument lo must be a positive integer");
+  }
+
+  if (hi == null) {
+    hi = a.length;
+  }
+
+  while (lo < hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    if (x < a[mid]) {
+      hi = mid;
+    } else {
+      lo = mid + 1;
+    }
+  }
+
+  return lo;
 }
 
 function _accumulate(array: Array<number>): Array<number> {
-  // TODO: improve this
-  const result: Array<any> = [];
-  array.reduce((acc, num) => {
-    result.push(acc + num);
-    return acc + num;
-  });
+  const result: Array<number> = [];
+  let acc = 0;
+  for (let i = 0; i < array.length; i++) {
+    acc += array[i];
+    result.push(acc);
+  }
   return result;
 }
 
 /**
  * Returns k sized array of population elements chosen with replacement.
-  If the relative weights or cumulative weights are not specified,
-  the selections are made with equal probability.
+ * If the relative weights or cumulative weights are not specified,
+ * the selections are made with equal probability.
+ * @param {Array<any>} population
+ * @param {number} k
+ * @param options
+ * @returns
  */
 function choices(
   population: Array<any>,
@@ -107,6 +127,7 @@ function choices(
   if (weights == null && cumWeights == null) {
     for (let i = 0; i < k; i++) {
       // choose k random elements from population at equal weight
+      // if weights or cumWeights arguments are not specified
       result.push(population[Math.floor(random() * n)]);
     }
   } else {
@@ -114,28 +135,21 @@ function choices(
       cumWeights = _accumulate(weights!);
     }
     const total = cumWeights[cumWeights.length - 1];
+
+    if (total <= 0) {
+      throw new Error("Total of weights must be greater than zero");
+    }
+
     const hi = n - 1;
     for (let i = 0; i < k; i++) {
-      const x = population[_bisect(cumWeights, random() * total, 0, hi)];
-      result.push(x);
+      const idx = _bisect_right(cumWeights, random() * total, 0, hi);
+      const item = population[idx];
+      result.push(item);
     }
-    /*
-    total = cum_weights[-1] + 0.0   # convert to flo t
-    if total <= 0.0:
-      raise ValueError('Total of weights must be greater than zero')
-    if not _isfinite(total):
-      raise ValueError('Total of weights must be finite')
-    bisect = _bisect
-    hi = n - 1
-    return [population[bisect(cum_weights, random() * total, 0, hi)] for i in _repeat(None, k)] 
-    */
   }
 
   return result;
 }
-
-const array = ["a", "b", "c"];
-const items = choices(array);
 
 module.exports = {
   random,
