@@ -1,3 +1,5 @@
+import { accumulate, bisectRight } from "./utils";
+
 /**
  * Returns a pseudorandom number between 0 and 1.
  * @returns {number}
@@ -49,42 +51,6 @@ function choice(array: Array<any>): any {
   return array[index];
 }
 
-function _bisect_right(
-  a: Array<number>,
-  x: number,
-  lo: number = 0,
-  hi: number | undefined = undefined
-): number {
-  if (lo < 0 || !Number.isInteger(lo)) {
-    throw new Error("Argument lo must be a positive integer");
-  }
-
-  if (hi == null) {
-    hi = a.length;
-  }
-
-  while (lo < hi) {
-    const mid = Math.floor((lo + hi) / 2);
-    if (x < a[mid]) {
-      hi = mid;
-    } else {
-      lo = mid + 1;
-    }
-  }
-
-  return lo;
-}
-
-function _accumulate(array: Array<number>): Array<number> {
-  const result: Array<number> = [];
-  let acc = 0;
-  for (let i = 0; i < array.length; i++) {
-    acc += array[i];
-    result.push(acc);
-  }
-  return result;
-}
-
 /**
  * Returns k sized array of population elements chosen with replacement.
  * If the relative weights or cumulative weights are not specified,
@@ -117,6 +83,10 @@ function choices(
     throw new Error("The number of weights does not match the population");
   }
 
+  if (cumWeights != null && cumWeights.length !== population.length) {
+    throw new Error("The number of cumWweights does not match the population");
+  }
+
   if (population.length === 0) {
     return [];
   }
@@ -132,7 +102,7 @@ function choices(
     }
   } else {
     if (cumWeights == null) {
-      cumWeights = _accumulate(weights!);
+      cumWeights = accumulate(weights!);
     }
     const total = cumWeights[cumWeights.length - 1];
 
@@ -142,7 +112,7 @@ function choices(
 
     const hi = n - 1;
     for (let i = 0; i < k; i++) {
-      const idx = _bisect_right(cumWeights, random() * total, 0, hi);
+      const idx = bisectRight(cumWeights, random() * total, 0, hi);
       const item = population[idx];
       result.push(item);
     }
