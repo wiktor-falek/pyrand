@@ -12,12 +12,12 @@ export declare function random(): number;
 export declare function randint(start: number, stop: number): number;
 /**
  * Shuffles the array in place.
- * @param {Array<any>} array
+ * @param {Array<T>} array
  */
-export declare function shuffle(array: Array<any>): void;
+export declare function shuffle<T>(array: Array<T>): void;
 /**
  * Returns a random element from the array. If array is empty returns undefined.
- * @param {Array<any>} array
+ * @param {Array<T>} array
  * @returns {any}
  */
 export declare function choice<T>(array: Array<T>): T;
@@ -25,7 +25,7 @@ export declare function choice<T>(array: Array<T>): T;
  * Returns k sized array of population elements chosen with replacement.
  * If the relative weights or cumulative weights are not specified,
  * the selections are made with equal probability.
- * @param {Array<any>} population
+ * @param {Array<T>} population
  * @param {number} k
  * @param {{weights?: Array<number>, cumWeights?: Array<number>}} options
  * @returns
