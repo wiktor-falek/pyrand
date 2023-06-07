@@ -43,10 +43,10 @@ function shuffle(array: Array<any>): void {
 
 /**
  * Returns a random element from the array. If array is empty returns undefined.
- * @param {Array<any>} array
- * @returns {any}
+ * @param {Array<T>} array
+ * @returns {T}
  */
-function choice(array: Array<any>): any {
+function choice<T>(array: Array<T>): T {
   const index = randint(0, Math.max(0, array.length - 1));
   return array[index];
 }
@@ -60,14 +60,14 @@ function choice(array: Array<any>): any {
  * @param {{weights?: Array<number>, cumWeights?: Array<number>}} options
  * @returns
  */
-function choices(
-  population: Array<any>,
+function choices<T>(
+  population: Array<T>,
   k: number = 1,
   options?: {
     weights?: Array<number>;
     cumWeights?: Array<number>;
   }
-): Array<any> | undefined {
+): Array<T> {
   const weights = options?.weights;
   let cumWeights = options?.cumWeights;
 

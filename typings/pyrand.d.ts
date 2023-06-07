@@ -20,7 +20,7 @@ export declare function shuffle(array: Array<any>): void;
  * @param {Array<any>} array
  * @returns {any}
  */
-export declare function choice(array: Array<any>): any;
+export declare function choice<T>(array: Array<T>): T;
 /**
  * Returns k sized array of population elements chosen with replacement.
  * If the relative weights or cumulative weights are not specified,
@@ -30,7 +30,7 @@ export declare function choice(array: Array<any>): any;
  * @param {{weights?: Array<number>, cumWeights?: Array<number>}} options
  * @returns
  */
-export declare function choices(population: Array<any>, k?: number, options?: {
+export declare function choices<T>(population: Array<T>, k?: number, options?: {
     weights?: Array<number>;
     cumWeights?: Array<number>;
-}): Array<any> | undefined;
+}): Array<T>;
